@@ -1,10 +1,9 @@
 (* by Scott Owens *)
 
-(*load "stlcTheory";*)
+open HolKernel boolLib bossLib listTheory optionTheory relationTheory;
+open stlcTheory IndDefLib IndDefRules ottTheory ottLib;
 
-open HolKernel boolLib bossLib test10stTheory IndDefLib IndDefRules listTheory optionTheory relationTheory;
-
-val _ = new_theory "test10st_metatheory";
+val _ = new_theory "stlcMetaTheory";
 
 val list_minus_thm = Q.prove (
 `!l x. ~(MEM x (list_minus l [x])) /\
