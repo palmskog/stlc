@@ -3,7 +3,7 @@
 open HolKernel boolLib bossLib listTheory optionTheory relationTheory;
 open stlcTheory IndDefLib IndDefRules ottTheory ottLib;
 
-val _ = new_theory "stlcMetaTheory";
+val _ = new_theory "stlcMeta";
 
 val list_minus_thm = Q.prove (
 `!l x. ~(MEM x (list_minus l [x])) /\
@@ -13,8 +13,8 @@ Induct THEN RW_TAC list_ss [list_minus_def] THEN METIS_TAC []);
 
 val datatype_thms = [T_11, T_distinct, t_11, t_distinct];
 
-val lookup_def = Define `
-(lookup [] x = NONE) /\
+val lookup_def = Define
+`(lookup [] x = NONE) /\
 (lookup ((x',Ty)::G) x = if x' = x then SOME Ty else lookup G x)`;
 
 val lookup_thm = Q.prove (
@@ -59,7 +59,7 @@ Induct THEN RW_TAC list_ss [GtT_fun, is_v_of_t_def]);
 val progress_thm = Q.prove (
 `!G t Ty. GtT G t Ty ==> (G = []) ==> is_v_of_t t \/ ?t'. reduce t t'`,
 RI GtT_sind THEN IMP_RES_TAC canon_val_lem THEN RW_TAC list_ss [reduce_fun, GtT_fun, is_v_of_t_def] THEN
-METIS_TAC [lookup_def, NOT_SOME_NONE, is_v_of_t_def]);
+METIS_TAC [lookup_def, NOT_SOME_NONE, is_v_of_t_def, clause_name_def]);
 
 val context_lem = Q.prove (
 `!G t Ty. GtT G t Ty ==> 
