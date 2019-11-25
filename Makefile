@@ -15,6 +15,7 @@ hol: stlcMetaScript.sml stlcScript.sml ottScript.sml ottLib.sig ottLib.sml
 
 clean: Makefile.coq
 	$(MAKE) -f Makefile.coq cleanall
+	Holmake clean
 	rm -f Makefile.coq Makefile.coq.conf stlc.v stlcScript.sml
 
 .PHONY: default clean

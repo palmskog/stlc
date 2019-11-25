@@ -18,4 +18,6 @@ ottTheory.sml
 stlcScript.sml
 stlcTheory.sig
 stlcTheory.sml
+stlcMetaTheory.sig
+stlcMetaTheory.sml
 stlc.v
